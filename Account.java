@@ -14,78 +14,79 @@ account was created.
 • A method named withdraw that withdraws a specified amount from the account.
 • A method named deposit that deposits a specified amount to the account.
  */
-import java.util.*;
-class Account
-{
-    private static int ID=0;
-    private double balance;
-    private double annualInterestRate=7;
-    private Date date;
-//here we use getter setter
-    public static int getID() {
-        
-        return ID;
-        
+
+   import java.util.*;
+
+public class Account{
+    private int id = 0;
+    private double balance = 0;
+    private double annualInterestRate = 0;
+    private Date dateCreated= new Date();
+
+    {
+        annualInterestRate = 7;
     }
-    public double getBalance() {
-        return this.balance;
+
+    Account() {
+        balance = 500;
+    }
+
+    Account(int id, double balance)
+    {
+        this.id = id;
+        this.balance= balance;
     }
 
     public void setBalance(double balance) {
         this.balance = balance;
     }
 
-    public double getAnnualInterestRate() {
-        return this.annualInterestRate;
-    }
-
     public void setAnnualInterestRate(double annualInterestRate) {
         this.annualInterestRate = annualInterestRate;
     }
 
-    public Date getDate() {
-        return this.date;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public double getAnnualInterestRate() {
+        return annualInterestRate;
     }
-    
-//here we use Default constructor
-    public Account()
-    {
-        ID = 0;
-        balance = 0;
-        annualInterestRate = 0;
+
+    public double getBalance() {
+        return balance;
     }
-//here we use paramiterrized constructor
-    public Account(int id,double b)
-    {
-        ID = id;
-        balance = b;
+
+    public Date getDateCreated() {
+        return dateCreated;
     }
-//here we make some methods for application
+
+    public int getId() {
+        return id;
+    }
+
     public double getMonthlyInterestRate()
     {
-        return ((float)annualInterestRate/12);
+        return annualInterestRate/12;
     }
 
     public double getMonthlyInterest()
     {
-        return ((float)annualInterestRate/100)/12;
-    }
-    
-    public void withdraw(double a)
-    {
-        balance-=a;
-        System.out.println("Your current balance is:-"+balance);
+        return balance*(annualInterestRate/1200);
     }
 
-    public String toString()
+    public double withdraw(double a)
     {
-        Date d = new Date();
-        System.out.println(d);
-        setDate(d);
-        return ("Account id is :- " + getID() + "\nYour Balance is:- " + getBalance() + "\n Account created on date:- " + d + "\nMonthly Interest is:-  "+getMonthlyInterest());
+        if(a<balance)
+            balance-=a;
+        else
+            System.out.println(“Insufficient balance”);
+        return balance;
+    }
+
+    public double deposit(double a)
+    {
+        balance+=a;
+        return balance;
     }
 }
