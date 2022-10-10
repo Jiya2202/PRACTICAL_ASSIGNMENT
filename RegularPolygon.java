@@ -9,82 +9,63 @@
 •   The method getPerimeter() that returns the perimeter of the polygon. 
 •   The method getArea() that returns the area of the polygon. The formula for computing the area of a regular polygon is:
  */
-import java.math.*;
+ 
+   public class RegularPolygon {
+    private int n = 3;
+    private double side = 1;
+    private double x = 0;
+    private double y = 0;
 
-public class RegularPolygon {
+    RegularPolygon() {}
 
-    static double pi = 3.14;
-    private int n;
-    private double side;
-    private double x;
-    private double y;
-    
-    public RegularPolygon(){
-        n = 3;
-        side = 1;
-        x = 0;
-        y = 0;
+    RegularPolygon(int n, double side){
+        this.n = n;
+        this.side = side;
     }
-    
-    public int getN() {
-        return n;
+
+    RegularPolygon(int n, double side, double x, double y){
+        this(n, side);
+        this.x = x;
+        this.y = y;
     }
 
     public void setN(int n) {
         this.n = n;
     }
 
-    public double getSide() {
-        return side;
-    }
-
     public void setSide(double side) {
         this.side = side;
-    }
-
-    public double getX() {
-        return x;
     }
 
     public void setX(double x) {
         this.x = x;
     }
 
-    public double getY() {
-        return y;
-    }
-
     public void setY(double y) {
         this.y = y;
     }
 
-    public RegularPolygon(int n, double side){
-        this.n = n;
-        this.side = side;
-        x = 0;
-        y = 0;
+    public int getN() {
+        return n;
     }
-    
-    public RegularPolygon(int n, double side, double x, double y){
-        this.n = n;
-        this.side = side;
-        this.x = x;
-        this.y = y;
+
+    public double getSide() {
+        return side;
     }
-    
-    public double getPerimeter() {
+
+    public double getX() {
+        return x;
+    }
+    public double getY() {
+        return y;
+    }
+
+    public double getPerimeter(){
         return n*side;
     }
-    
-    public double getArea() {
-        return (n*side*side)/(4*Math.tan(pi/n));
-    }
-    
-    public void print() {
-        System.out.println("No. of sides : " + n);
-        System.out.println("Length of sides : " + side);
-        System.out.println("Perimeter of Polygon : " + getPerimeter());
-        System.out.println("Area of Polygon : " + getArea());
-        System.out.println();
+
+    public double getArea(){
+        double area = (n*side*side)/(4*Math.tan(3.14/n));
+        return area;
     }
 }
